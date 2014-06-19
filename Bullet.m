@@ -10,5 +10,9 @@
 
 @implementation Bullet
 
+- (void)didLoadFromCCB {
+    CCLOG(@"Bullet didLoadFromCCB!");
+    self.physicsBody.collisionType = @"Bullet";
+}
 
 @end

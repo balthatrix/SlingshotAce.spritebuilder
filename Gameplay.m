@@ -13,14 +13,12 @@
     CCPhysicsNode *_physicsNode;
     
     //box from which the user will draw bullets
-    CCNode *_slingshotStartA;
+    CCNode *_slingshotStart;
     CCNode *_slingshotStartB;
-    //spring is created between start and pouch when user drags
-    CCPhysicsJoint *_slingshotSpringA;
+    CCPhysicsJoint *_slingshotSpring;
     CCPhysicsJoint *_slingshotSpringB;
+    
     //glue to keep bullet attached to sling until release
-    CCPhysicsJoint *_bulletGlue;
-    CCNode *_slingshotPouch;
     CCNode *_dragNode;
     CCPhysicsJoint *_dragSpring;
     
@@ -36,60 +34,57 @@
     
     _physicsNode.debugDraw = TRUE;
     
-    [_slingshotStartA.physicsBody setCollisionType:@"Slingshot"];
-    [_slingshotStartB.physicsBody setCollisionType:@"Slingshot"];
-    [_slingshotPouch.physicsBody setCollisionType:@"Slingshot"];
-    [_dragNode.physicsBody setCollisionMask:@[]];
+    _physicsNode.collisionDelegate = self;
     
-    _slingshotSpringA = [CCPhysicsJoint connectedSpringJointWithBodyA:_slingshotPouch.physicsBody
-                                                               bodyB:_slingshotStartA.physicsBody
-                                                             anchorA:ccp(0,0)
-                                                             anchorB:ccp(0,0)
-                                                          restLength:20.f
-                                                           stiffness:500.f
-                                                             damping:40.f];
-    _slingshotSpringB = [CCPhysicsJoint connectedSpringJointWithBodyA:_slingshotPouch.physicsBody
-                                                                bodyB:_slingshotStartB.physicsBody
-                                                              anchorA:ccp(30,0)
-                                                              anchorB:ccp(0,0)
-                                                           restLength:20.f
-                                                            stiffness:500.f
-                                                              damping:40.f];
+    [_slingshotStart.physicsBody setCollisionMask:@[]];
+    [_slingshotStartB.physicsBody setCollisionMask:@[]];
+    [_dragNode.physicsBody setCollisionMask:@[]];
 
 }
 
 -(void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     //[self shootBullet];
+    
+    //[self shootBullet];
     CGPoint touchLocation = [touch locationInNode:_physicsNode];
+    
     CCLOG(@"here is the location of the touch: x:%.2f y: %.2f", touchLocation.x, touchLocation.y);
-    if(CGRectContainsPoint([_slingshotPouch boundingBox], touchLocation)) {
+    if(CGRectContainsPoint([_slingshotStart boundingBox], touchLocation)) {
+        _currentBullet = [CCBReader load:@"Bullet"];
+//        
+//        _currentBullet = [CCBReader load:@"Bullet"];
         _dragNode.position = touchLocation;
-        _dragSpring = [CCPhysicsJoint connectedSpringJointWithBodyA:_slingshotPouch.physicsBody
+        _currentBullet.position = touchLocation;
+        [_physicsNode addChild:_currentBullet];
+//        
+        _slingshotSpring = [CCPhysicsJoint connectedSpringJointWithBodyA:_slingshotStart.physicsBody
+                                                                   bodyB:_currentBullet.physicsBody
+                                                                 anchorA:ccp(15,15)
+                                                                 anchorB:ccp(0,0)
+                                                              restLength:0
+                                                               stiffness:500.f
+                                                                 damping:40.f];
+        _slingshotSpringB = [CCPhysicsJoint connectedSpringJointWithBodyA:_slingshotStartB.physicsBody
+                                                                   bodyB:_currentBullet.physicsBody
+                                                                 anchorA:ccp(15,15)
+                                                                 anchorB:ccp(0,0)
+                                                              restLength:0
+                                                               stiffness:500.f
+                                                                 damping:40.f];
+//
+        _dragSpring = [CCPhysicsJoint connectedSpringJointWithBodyA:_currentBullet.physicsBody
                                                                    bodyB:_dragNode.physicsBody
                                                                  anchorA:ccp(0,0)
                                                                  anchorB:ccp(0,0)
                                                                restLength:0.f
-                                                               stiffness:3000.f
+                                                               stiffness:10000.f
                                                                  damping:150.f];
-
-    
-        //position the bullet on the pouch
-        //_currentBullet = [CCBReader load:@"Bullet"];
-        //CGPoint bulletPosition = [_slingshotPouch convertToWorldSpace:ccp(0,6)];
-        //_currentBullet.position = [_physicsNode convertToNodeSpace:bulletPosition];
         
-        //add current bullet, and don't let it collide with slingshot
-        //[_physicsNode addChild:_currentBullet];
-        //[_currentBullet.physicsBody setCollisionType:@"Slingshot"];
-        
-        //keep the bullet attached to the sling
-        //_bulletGlue = [CCPhysicsJoint connectedPivotJointWithBodyA:_currentBullet.physicsBody
-        //                                                     bodyB:_slingshotPouch.physicsBody
-        //                                                   anchorA:_currentBullet.anchorPointInPoints];
     }
+    
 }
 
-- (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+- (void) touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
     
     // whenever touches move, update the position of the mouseJointNode to the touch position
@@ -112,6 +107,17 @@
     if(_dragSpring != nil ) {
         [_dragSpring invalidate];
         _dragSpring = nil;
+        
+    }
+    //this should actually go in update
+    if(_slingshotSpring != nil) {
+        [_slingshotSpring invalidate];
+        _slingshotSpring = nil;
+    }
+    
+    if(_slingshotSpringB != nil) {
+        [_slingshotSpringB invalidate];
+        _slingshotSpringB = nil;
     }
 }
 
@@ -120,15 +126,22 @@
 -(void) shootBullet {
     CCNode* bullet = [CCBReader load:@"Bullet"];
     
-    bullet.position = _slingshotStartA.position;
+    bullet.position = _slingshotStart.position;
     
     //testing if
-    [bullet.physicsBody setCollisionMask:@[]];
+    //[bullet.physicsBody setCollisionMask:@[]];
     [_physicsNode addChild:bullet];
     
     CGPoint launchDirection = ccp(0,1);
     CGPoint force = ccpMult(launchDirection, 8000);
     [bullet.physicsBody applyForce:force];
+}
+
+//you can name the parameter for this method 'seal' due to late binding in objective C
+-(void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair Bullet:(CCNode *)nodeA wildcard:(CCNode *)nodeB
+{
+    CCLOG(@"collision with bullet!");
+    
 }
 
 @end
