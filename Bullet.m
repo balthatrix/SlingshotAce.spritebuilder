@@ -13,6 +13,12 @@
 - (void)didLoadFromCCB {
     CCLOG(@"Bullet didLoadFromCCB!");
     self.physicsBody.collisionType = @"Bullet";
+    _life = 1.0;
+    _prevPosition = ccp(-1.f,-1.f);
+}
+
+-(void)updateLife: (float)life {
+    _life -= life;
 }
 
 @end

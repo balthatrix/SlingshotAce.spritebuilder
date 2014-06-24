@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/badge_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{275, 731}, {96, 96}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {96, 96}}</string>
+			<key>sourceSize</key>
+			<string>{96, 96}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/badge_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{275, 829}, {96, 96}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {96, 96}}</string>
+			<key>sourceSize</key>
+			<string>{96, 96}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/climb_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{141, 203}, {134, 192}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {134, 192}}</string>
+			<key>sourceSize</key>
+			<string>{134, 192}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/climb_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{143, 1}, {132, 192}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {132, 192}}</string>
+			<key>sourceSize</key>
+			<string>{132, 192}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/duck.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{273, 585}, {136, 144}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {136, 144}}</string>
+			<key>sourceSize</key>
+			<string>{136, 144}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/hurt.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{137, 789}, {136, 186}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {136, 186}}</string>
+			<key>sourceSize</key>
+			<string>{136, 186}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/idle.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{139, 599}, {132, 186}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {132, 186}}</string>
+			<key>sourceSize</key>
+			<string>{132, 186}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/jump.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 789}, {134, 188}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {134, 188}}</string>
+			<key>sourceSize</key>
+			<string>{134, 188}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/stand.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{145, 397}, {132, 186}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {132, 186}}</string>
+			<key>sourceSize</key>
+			<string>{132, 186}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/swim_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 203}, {138, 198}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {138, 198}}</string>
+			<key>sourceSize</key>
+			<string>{138, 198}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/swim_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 1}, {140, 200}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {140, 200}}</string>
+			<key>sourceSize</key>
+			<string>{140, 200}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/walk_1.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 599}, {136, 188}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {136, 188}}</string>
+			<key>sourceSize</key>
+			<string>{136, 188}</string>
+		</dict>
+		<key>Mobs/platformerGraphics_xenoDiversity/Red/Zeta/walk_2.png</key>
+		<dict>
+			<key>frame</key>
+			<string>{{1, 403}, {142, 194}}</string>
+			<key>offset</key>
+			<string>{0, 0}</string>
+			<key>rotated</key>
+			<false/>
+			<key>sourceColorRect</key>
+			<string>{{0, 0}, {142, 194}}</string>
+			<key>sourceSize</key>
+			<string>{142, 194}</string>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>2</integer>
+		<key>size</key>
+		<string>{1024, 1024}</string>
+		<key>textureFileName</key>
+		<string>Zeta.png</string>
+	</dict>
+</dict>
+</plist>
